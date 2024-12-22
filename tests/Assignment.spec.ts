@@ -43,59 +43,24 @@ test.describe("Assignment", () => {
   test("Date Range", async () => {
     await assignMentPage.viewDemoProject();
     expect(assignMentPage.isDateRangeComponentVisible()).toBeTruthy();
-    expect(
-      assignMentPage.comepareList(
-        await assignMentPage.getListWeekDays(),
-        WEEK_DAYS
-      )
-    ).toBeTruthy();
-    await page.waitForTimeout(10000);
+    expect(assignMentPage.comepareList(await assignMentPage.getListWeekDays(),WEEK_DAYS)).toBeTruthy();
   });
 
   test("Time Range", async () => {
-    await page.goto(CommonConst.DEV_URL);
-    expect(
-      assignMentPage.comepareList(
-        await assignMentPage.getListTimeRange(),
-        LIST_TIME_RANGE
-      )
-    ).toBeTruthy();
-    await page.waitForTimeout(10000);
+    expect(assignMentPage.comepareList(await assignMentPage.getListTimeRange(),LIST_TIME_RANGE)).toBeTruthy();
   });
 
   test("Column Filter", async () => {
     expect(assignMentPage.isColumnFilterComponentVisible()).toBeTruthy();
-    expect(
-      assignMentPage.comepareList(
-        await assignMentPage.getListColumnValue(),
-        LIST_COLUMN_VALUE
-      )
-    ).toBeTruthy();
+    expect(assignMentPage.comepareList(await assignMentPage.getListColumnValue(),LIST_COLUMN_VALUE)).toBeTruthy();
     await assignMentPage.selectColumnFilter("Trace Name");
-    expect(
-      assignMentPage.comepareList(
-        await assignMentPage.getListLogicalFilterOptions(),
-        LIST_LOGICAL_OPTIONS_OF_TRACE_NAME
-      )
-    ).toBeTruthy();
-    await page.waitForTimeout(10000);
+    expect(assignMentPage.comepareList(await assignMentPage.getListLogicalFilterOptions(),LIST_LOGICAL_OPTIONS_OF_TRACE_NAME)).toBeTruthy();
   });
 
   test("Column Filter 2", async () => {
     expect(assignMentPage.isColumnFilterComponentVisible()).toBeTruthy();
-    expect(
-      assignMentPage.comepareList(
-        await assignMentPage.getListColumnValue(),
-        LIST_COLUMN_VALUE
-      )
-    ).toBeTruthy();
+    expect(assignMentPage.comepareList(await assignMentPage.getListColumnValue(),LIST_COLUMN_VALUE)).toBeTruthy();
     await assignMentPage.selectColumnFilter("Tags");
-    expect(
-      assignMentPage.comepareList(
-        await assignMentPage.getListLogicalFilterOptions(),
-        LIST_LOGICAL_OPTIONS_OF_TAGS
-      )
-    ).toBeTruthy();
-    await page.waitForTimeout(10000);
+    expect(assignMentPage.comepareList(await assignMentPage.getListLogicalFilterOptions(),LIST_LOGICAL_OPTIONS_OF_TAGS)).toBeTruthy();
   });
 });

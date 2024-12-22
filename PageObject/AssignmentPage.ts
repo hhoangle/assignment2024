@@ -36,7 +36,7 @@ export class AssignmentPage extends BasePage {
 
   async getListTimeRange(): Promise<string[]> {
     await this.waitForElementVisible(AssignmentUI.TIME_RANGE_DROPDOWN);
-    await this.clickToElementDynamic(AssignmentUI.TIME_RANGE_DROPDOWN);
+    await this.clickToElement(AssignmentUI.TIME_RANGE_DROPDOWN);
     return await this.getListElementsText(this.page, AssignmentUI.LIST_TIME_RANGE_OPTIONS);
   }
 
