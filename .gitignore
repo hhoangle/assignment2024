@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/allure-results
+=======
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/allure-results
+>>>>>>> 6cf062a (first commit)
+/allure-report
