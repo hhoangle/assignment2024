@@ -4,19 +4,22 @@
   "description": "",
   "main": "action.js",
   "scripts": {
-    "install-all": "npm i && npx playwright install"
+    "install-all": "npm i && npx playwright install",
+    "clear:results": "rd /s /q allure-results",
+    "test": "rimraf allure-results && playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.44.0",
+    "@playwright/test": "^1.49.1",
     "@types/faker": "^6.6.9",
     "@types/node": "^20.11.30",
     "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1",
     "jest": "^29.7.0",
-    "jest-stare": "^2.5.1"
+    "jest-stare": "^2.5.1",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
     "@faker-js/faker": "^9.2.0",

@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import { testPlanFilter } from "allure-playwright/dist/testplan";
+import  allurePlaywright  from "allure-playwright";
 import dotenv from "dotenv";
 import path from "path";
 dotenv.config();
@@ -13,8 +14,9 @@ dotenv.config();
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout: 300000,
+  timeout: 200000,
   testDir: "./tests",
+  globalSetup: "./setup/global-setup",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -53,7 +55,8 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     screenshot: "only-on-failure",
-    baseURL: process.env.ENV === "dev" ? process.env.DEV_URL : process.env.UAT_URL,
+    baseURL:
+      process.env.ENV === "dev" ? process.env.DEV_URL : process.env.UAT_URL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
   },
