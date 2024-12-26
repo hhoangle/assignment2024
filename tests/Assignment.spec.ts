@@ -21,9 +21,9 @@ const LIST_COLUMN_VALUE = ["Trace Name", "Tags", "User", "Release", "Version"];
 const LIST_LOGICAL_OPTIONS_OF_TRACE_NAME = ["any of", "none of"];
 const LIST_LOGICAL_OPTIONS_OF_TAGS = ["any of", "none of", "all of"];
 
-test.beforeAll(async () => {
+test.beforeEach(async () => {
   browserContext = await chromium.launchPersistentContext("", {
-    headless: true,
+    headless: false,
     viewport: {
       width: 1920,
       height: 1080,
@@ -33,11 +33,13 @@ test.beforeAll(async () => {
   assignMentPage = new AssignmentPage(page);
   await page.goto(CommonConst.DEV_URL);
   await assignMentPage.clickToSignUpButton();
-  await assignMentPage.login(
-    CommonConst.DEMO_ACCOUNT,
-    CommonConst.DEMO_PASSWORD
-  );
+  await assignMentPage.login(CommonConst.DEMO_ACCOUNT,CommonConst.DEMO_PASSWORD);
   await assignMentPage.viewDemoProject();
+});
+
+test.afterEach(async () => {
+  // Close the browser context after each test
+  await browserContext.close();
 });
 
 test.describe("Assignment", () => {

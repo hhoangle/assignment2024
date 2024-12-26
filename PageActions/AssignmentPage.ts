@@ -40,7 +40,8 @@ export class AssignmentPage extends BasePage {
     return await this.getListElementsText(this.page, AssignmentUI.LIST_TIME_RANGE_OPTIONS);
   }
 
-  async isColumnFilterComponentVisible(): Promise<boolean> { 
+  async isColumnFilterComponentVisible(): Promise<boolean> {
+    await this.sleepInSecond(3);
     await this.clickToElement(AssignmentUI.COLUMN_FILTER_BUTTON);
     return await this.isElementDisplayed(AssignmentUI.COLUMN_DROPDOWN)
     && await this.isElementDisplayed(AssignmentUI.ADD_FILTER_BUTTON);
@@ -55,6 +56,7 @@ export class AssignmentPage extends BasePage {
   async selectColumnFilter(columnName: string) {
     await this.clickToElement(AssignmentUI.COLUMN_OPTIONS.replace("%s", columnName));
     await this.page.keyboard.press("Escape");
+    await this.sleepInSecond(2);
   }
   
   async getListLogicalFilterOptions(): Promise<string[]> { 
