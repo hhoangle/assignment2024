@@ -5,7 +5,8 @@
   "main": "action.js",
   "scripts": {
     "install-all": "npm i && npx playwright install",
-    "clear:results": "rd /s /q allure-results",
+    "clear:results": "rm -rf allure-results/*",
+    "clean:allure": "rimraf allure-results && mkdir allure-results",
     "test": "rimraf allure-results && playwright test"
   },
   "keywords": [],

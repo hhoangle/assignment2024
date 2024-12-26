@@ -41,16 +41,16 @@ test.beforeAll(async () => {
 });
 
 test.describe("Assignment", () => {
-  test("Date Range", async () => {
+  test("TC_0001 Check DateRange", async () => {
     logger.logTestCaseName("TC_0001 Check DateRange");
     logger.logTestStep("TC_0001 Check DateRange");
-    
+
     logger.logTestStep("Step 1: Verify Date range component");
     expect(assignMentPage.isDateRangeComponentVisible()).toBeTruthy();
     expect(assignMentPage.comepareList(await assignMentPage.getListWeekDays(),WEEK_DAYS)).toBeTruthy();
   });
 
-  test("Time Range", async () => {
+  test("TC_0002 Check Time Range", async () => {
     logger.logTestCaseName("TC_0002 Check Time Range");
     logger.logTestStep("TC_0002 Check Time Range");
 
@@ -58,29 +58,29 @@ test.describe("Assignment", () => {
     expect(assignMentPage.comepareList(await assignMentPage.getListTimeRange(),LIST_TIME_RANGE)).toBeTruthy();
   });
 
-  test("Column Filter", async () => {
+  test("TC_0003 Check Column Filter", async () => {
     logger.logTestCaseName("TC_0003 Check Column Filter");
     logger.logTestStep("TC_0003 Check Column Filter");
 
     logger.logTestStep("Step 1: Verify Column Filter component");
     expect(assignMentPage.isColumnFilterComponentVisible()).toBeTruthy();
-    expect(assignMentPage.comepareList(await assignMentPage.getListColumnValue(), LIST_COLUMN_VALUE)).toBeTruthy();
-    
+    expect(assignMentPage.comepareList(await assignMentPage.getListColumnValue(),LIST_COLUMN_VALUE)).toBeTruthy();
+
     logger.logTestStep("Step 2: Select column filter: Trace Name");
     await assignMentPage.selectColumnFilter("Trace Name");
     expect(assignMentPage.comepareList(await assignMentPage.getListLogicalFilterOptions(),LIST_LOGICAL_OPTIONS_OF_TRACE_NAME)).toBeTruthy();
   });
 
-  // test("Column Filter 2", async () => {
-  //   logger.logTestCaseName("TC_0004 Check Filter component");
-  //   logger.logTestStep("TC_0004 Check Column Filter");
+  test("TC_0004 Check Filter component", async () => {
+    logger.logTestCaseName("TC_0004 Check Filter component");
+    logger.logTestStep("TC_0004 Check Column Filter");
 
-  //   logger.logTestStep("Step 1: Verify Column Filter component");
-  //   expect(assignMentPage.isColumnFilterComponentVisible()).toBeTruthy();
-  //   expect(assignMentPage.comepareList(await assignMentPage.getListColumnValue(), LIST_COLUMN_VALUE)).toBeTruthy();
-    
-  //   logger.logTestStep("Step 2: Select column filter: Tags");
-  //   await assignMentPage.selectColumnFilter("Tags");
-  //   expect(assignMentPage.comepareList(await assignMentPage.getListLogicalFilterOptions(),LIST_LOGICAL_OPTIONS_OF_TAGS)).toBeTruthy();
-  // });
+    logger.logTestStep("Step 1: Verify Column Filter component");
+    expect(assignMentPage.isColumnFilterComponentVisible()).toBeTruthy();
+    expect(assignMentPage.comepareList(await assignMentPage.getListColumnValue(),LIST_COLUMN_VALUE)).toBeTruthy();
+
+    logger.logTestStep("Step 2: Select column filter: Tags");
+    await assignMentPage.selectColumnFilter("Tags");
+    expect(assignMentPage.comepareList(await assignMentPage.getListLogicalFilterOptions(), LIST_LOGICAL_OPTIONS_OF_TAGS)).toBeTruthy();
+  });
 });
