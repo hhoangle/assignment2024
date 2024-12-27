@@ -23,7 +23,7 @@ const LIST_LOGICAL_OPTIONS_OF_TAGS = ["any of", "none of", "all of"];
 
 test.beforeEach(async () => {
   browserContext = await chromium.launchPersistentContext("", {
-    headless: false,
+    headless: true,
     viewport: {
       width: 1920,
       height: 1080,

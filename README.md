@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Playwright Testing Framework
 
 ## Design Pattern

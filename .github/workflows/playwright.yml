@@ -31,4 +31,4 @@ jobs:
 
       # Step 5: Run Playwright tests with xvfb for headed mode
       - name: Run Playwright tests
-        run: xvfb-run --auto-servernum -- npx playwright test --headed
+        run: npx playwright test
