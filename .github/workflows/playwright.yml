@@ -15,20 +15,40 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js
+      # Step 2: Install missing dependencies
+      - name: Install browser dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libcups2 \
+            libxcomposite1 \
+            libxrandr2 \
+            libxdamage1 \
+            libgbm-dev \
+            libasound2 \
+            libpangocairo-1.0-0 \
+            libpango-1.0-0 \
+            libcairo2 \
+            libxshmfence1 \
+            libglu1-mesa
+
+      # Step 3: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Step 3: Install dependencies
-      - name: Install dependencies
+      # Step 4: Install dependencies
+      - name: Install project dependencies
         run: npm install
 
-      # Step 4: Install Playwright browsers
+      # Step 5: Install Playwright browsers
       - name: Install Playwright browsers
         run: npx playwright install
 
-      # Step 5: Run Playwright tests with xvfb for headed mode
+      # Step 6: Run Playwright tests with xvfb for headed mode
       - name: Run Playwright tests
         run: npx playwright test
