@@ -36,7 +36,7 @@ jobs:
             libhyphen0 \
             libmanette-0.2-0 \
             libgles2-mesa \
-            libx264-160
+            libx264-dev
 
       # Step 3: Set up Node.js
       - name: Set up Node.js
