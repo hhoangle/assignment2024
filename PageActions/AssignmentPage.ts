@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "../Base/BasePage";
-import { AssignmentUI } from "../PageUI/AssignmentUI";
+import { AssignmentUI } from "../PageObject/AssignmentPage";
 export class AssignmentPage extends BasePage {
   constructor(page: Page) {
     super(page);
