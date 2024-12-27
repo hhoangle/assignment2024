@@ -29,7 +29,6 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install
 
-      # Step 5: Run Playwright tests with headless=false
+      # Step 5: Run Playwright tests with xvfb for headed mode
       - name: Run Playwright tests
-        run: |
-          npx playwright test --headed
+        run: xvfb-run --auto-servernum -- npx playwright test --headed
