@@ -5,6 +5,7 @@ import { logger } from "../Logger/logger";
 let browserContext: BrowserContext;
 let page: Page;
 let assignMentPage: AssignmentPage;
+let browser;
 const WEEK_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const LIST_TIME_RANGE = [
   "5 min",
@@ -22,14 +23,14 @@ const LIST_LOGICAL_OPTIONS_OF_TRACE_NAME = ["any of", "none of"];
 const LIST_LOGICAL_OPTIONS_OF_TAGS = ["any of", "none of", "all of"];
 
 test.beforeEach(async () => {
-  browserContext = await chromium.launchPersistentContext("", {
-    headless: true,
+  browser = await chromium.launch({ headless: true });
+  browserContext = await browser.newContext({
     viewport: {
       width: 1920,
       height: 1080,
     },
   });
-  page = browserContext.pages()[0];
+  page = await browserContext.newPage();
   assignMentPage = new AssignmentPage(page);
   await page.goto(CommonConst.DEV_URL);
   await assignMentPage.clickToSignUpButton();
@@ -39,7 +40,7 @@ test.beforeEach(async () => {
 
 test.afterEach(async () => {
   // Close the browser context after each test
-  await browserContext.close();
+  await browser.close();
 });
 
 test.describe("Assignment", () => {
