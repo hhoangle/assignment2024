@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       # Step 2: Install missing dependencies
-      - name: Install browser dependencies
+      - name: Install Playwright dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -38,20 +38,24 @@ jobs:
             libgles2-mesa \
             libx264-dev
 
-      # Step 3: Set up Node.js
+      # Step 3: Install Playwright dependencies
+      - name: Install Playwright dependencies
+        run: npx playwright install-deps
+
+      # Step 4: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Step 4: Install dependencies
+      # Step 5: Install dependencies
       - name: Install project dependencies
         run: npm install
 
-      # Step 5: Install Playwright browsers
+      # Step 6: Install Playwright browsers
       - name: Install Playwright browsers
         run: npx playwright install
 
-      # Step 6: Run Playwright tests with xvfb for headed mode
+      # Step 7: Run Playwright tests with xvfb for headed mode
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum -- npx playwright test --headed
